@@ -60,7 +60,7 @@ class task3Controller
         $View->renderView($employee);
     }
 
-    public function redirectAction($route="/Insly/?action=task3")
+    public function redirectAction($route="?action=task3")
     {
         header("location: $route");
     }
