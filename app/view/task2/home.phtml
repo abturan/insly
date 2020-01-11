@@ -1,0 +1,51 @@
+ <main role="main" class="container">
+    
+	<h1 class="mt-5 taskContainer"> Task 2 - <small>Car insurance calculator</small></h1>
+
+    <div class="container">
+        <div class="row col-md-6 col-md-offset-2">
+        <h5 class="mt-5 "> Calculator </h5>
+            <div class="container ">
+                <form action="/Insly/?action=task2calculate" class="form-horizontal"  method="post">
+                <input id='timezone' name='timezone'  type='hidden'>
+                <br>
+                <div class="form-group">
+                    <label class="control-label col-sm-10" for="estimated">Estimated value of the car:</label>
+                    <div class="col-sm-10">
+                    <input type="number" id="estimated_input"  class="form-control" min="100" max="100000">
+                    <br><input type="range" min="100" max="100000" value="50000" class="slider" id="estimated" name="estimated" step="100">
+                    <p>Value: <span id="estimated_show"></span>&nbsp; &#8364</p>
+                    </div><br>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-sm-10" for="tax">Tax percentage:</label>
+                    <div class="col-sm-10">
+                    <input type="number" id="tax_input"  class="form-control" min="0" max="100">
+                    <br><input type="range" min="0" max="100" value="50" class="slider" id="tax" name="tax" step="10">
+                    <p>Value: <span id="tax_show"></span>&nbsp; %</p>
+                    </div><br>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-sm-10" for="instalments">Number of instalments:</label>
+                    <div class="col-sm-10">
+                    <input type="number" id="instalments_input"  class="form-control" min="1" max="12">
+                    <br><input type="range" min="1" max="12" value="6" class="slider" id="instalments" name="instalments">
+                    <p>Value: <span id="instalments_show"></span>&nbsp;</p>
+                    </div>
+                </div>
+
+                <div class="form-group"> 
+                    <div class="col-sm-offset-2 col-sm-10">
+                    <button type="submit" class="btn  btn-primary btn-xs">Calculate</button>
+                    </div>
+                </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</main>
+
+
+<!-- Task2 JS -->
+
+<script src="/Insly/public/js/task2.js"></script>

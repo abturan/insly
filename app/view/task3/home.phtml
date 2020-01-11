@@ -1,0 +1,47 @@
+ <main role="main" class="container">
+    
+	<h1 class="mt-5 taskContainer"> Task 3 - <small>Store employee data</small></h1>
+    	
+    <div class="row">
+        <div class="col-md-2">
+            <a href="/Insly/?action=task3" class="btn btn-primary btn-xs pull-right"><b>+</b> Employee List</a>
+        </div>
+        <div class="col-md-2">
+            <a href="/Insly/?action=task3add" class="btn btn-primary btn-xs pull-right"><b>+</b> Add new employee</a>
+        </div>
+    </div>
+    
+    <h5 class="mt-5 "> Employee List</h5>
+
+    <div class="container">
+        <div class="row col-md-6 col-md-offset-2">
+            <table class="table table-striped ">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Phone</th>
+                        <th class="text-center">Action</th>
+                    </tr>
+                </thead>
+
+                    <?php
+                        foreach ($data as $key => $row) 
+                        {
+                            echo '
+                            <tr>
+                            <td>'.$row['id'].'</td>
+                            <td>'.$row['name'].'</td>
+                            <td>'.$row['phone'].'</td>
+                            <td class="text-center"><a class="btn btn-info btn-xs" href="/Insly/?action=employee&id='.$row['id'].'"><span class="glyphicon glyphicon-edit"></span> Show</a> </td>
+                            </tr>
+                            ';   
+                        }
+                    ?>
+            </table>
+        </div>
+    </div>
+
+</main>
+
+

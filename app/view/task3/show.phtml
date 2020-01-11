@@ -1,0 +1,76 @@
+ <main role="main" class="container">
+    
+	<h1 class="mt-5 taskContainer"> Task 3 - <small>Store employee data</small></h1>
+    	
+    <div class="row">
+        <div class="col-md-2">
+            <a href="/Insly/?action=task3" class="btn btn-primary btn-xs pull-right"><b>+</b> Employee List</a>
+        </div>
+        <div class="col-md-2">
+            <a href="/Insly/?action=task3add" class="btn btn-primary btn-xs pull-right"><b>+</b> Add new employee</a>
+        </div>
+    </div>
+
+    <h5 class="mt-5 "> Employee Detail</h5>
+    
+    <div class="container">
+        <div class="row col-md-12 ">
+            
+            <table class="table table-striped ">
+            
+                    <?php
+
+                    $is_current_employee = ($data['is_current_employee']=1)?'Yes':'No';
+                            
+                            echo '
+                            <tr><td colspan=2 style="background-color:grey; color:white">General Infromations</td></tr>
+                            <tr><td>ID</td><td>'.$data['id'].'</td></tr>
+                            <tr><td>Name</td><td>'.$data['name'].'</td></tr>
+                            <tr><td>Email</td><td>'.$data['email'].'</td></tr>
+                            <tr><td>Birth Date</td><td>'.$data['birthdate'].'</td></tr>
+                            <tr><td>Phone</td><td>'.$data['phone'].'</td></tr>
+                            <tr><td>SSN</td><td>'.$data['ssn'].'</td></tr>
+                            <tr><td>Current</td><td>'.$is_current_employee.'</td></tr>
+                            <tr><td>Address</td><td>'.$data['address'].'</td></tr>
+                            </tr>
+                            ';
+
+                            
+                            foreach ($data['info'] as $key => $row) 
+                            {
+                                if ($row['employee_info_id']==1) 
+                                {
+                                    echo '
+                                    <tr><td colspan=2 style="background-color:grey; color:white">Introduction</td></tr>
+                                    <tr><td>Introduction <br><span class="flag-icon flag-icon-us"></span></td><td>'.$row['info_en'].'</td></tr>
+                                    <tr><td>Introducción <br><span class="flag-icon flag-icon-es"></span></td><td>'.$row['info_es'].'</td></tr>
+                                    <tr><td>Introduction <br><span class="flag-icon flag-icon-fr"></span></td><td>'.$row['info_fr'].'</td></tr>
+                                    ';
+
+                                } else if ($row['employee_info_id']==2) 
+                                {
+                                    echo '
+                                    <tr><td colspan=2 style="background-color:grey; color:white">Previous work experience</td></tr>
+                                    <tr><td>Previous work experience<br><span class="flag-icon flag-icon-us"></td><td>'.$row['info_en'].'</td></tr>
+                                    <tr><td>Experiencia de trabajo previa<br><span class="flag-icon flag-icon-es"></td><td>'.$row['info_es'].'</td></tr>
+                                    <tr><td>Précédente expérience professionnelle<br><span class="flag-icon flag-icon-fr"></td><td>'.$row['info_fr'].'</td></tr>
+                                    ';
+
+                                } else if ($row['employee_info_id']==3) 
+                                {
+                                    echo '
+                                    <tr><td colspan=2 style="background-color:grey; color:white">Education information</td></tr>
+                                    <tr><td>Education information<br><span class="flag-icon flag-icon-us"></td><td>'.$row['info_en'].'</td></tr>
+                                    <tr><td>ExperieInformación sobre Educación<br><span class="flag-icon flag-icon-es"></td><td>'.$row['info_es'].'</td></tr>
+                                    <tr><td>Information sur l\'éducation<br><span class="flag-icon flag-icon-fr"></td><td>'.$row['info_fr'].'</td></tr>
+                                    ';
+
+                                }
+                            }
+                    ?>
+            </table>
+        </div>
+    </div>
+</main>
+
+

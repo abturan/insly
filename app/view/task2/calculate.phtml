@@ -1,0 +1,80 @@
+ <main role="main" class="container">
+    
+	<h1 class="mt-5 taskContainer"> Task 2 - <small>Car insurance calculator</small></h1>
+    <div class="row">
+        <div class="col-md-2">
+            <a href="/Insly/?action=task2" class="btn btn-primary btn-xs pull-right"><b>+</b> Calculator</a>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row col-md-offset-2">
+        <h5 class="mt-5 "> Results </h5>
+            <div class="container ">
+            <table class="table table-striped ">
+            
+            <?php
+                    
+                    echo ' <tr><td></td><td><strong>Policy</strong></td>';
+                    if ($data['instalments']>1)
+                    {
+                        for ($i=1; $i<=$data['instalments']; $i++)
+                        {
+                            echo ' <td><strong>'.$i.' instalment</strong></td>';
+                        }
+                    }
+                    echo '</tr>';
+                    echo '<tr><td>Value</td><td>'.$data['value'].'</td>';
+                    echo '</tr>';
+                    echo '<tr><td>Base premium</td><td>'.$data['basePrice'].'</td>';
+
+                    if ($data['instalments']>1)
+                    {
+                        foreach ($data['basePriceInstallments'] as $div)
+                        {
+                            echo ' <td>'.$div.'</td>';
+                        }
+                    }
+
+                    echo '</tr>';
+                    echo '<tr><td>Commission</td><td>'.$data['commision'].'</td>';
+
+                    if ($data['instalments']>1)
+                    {
+                        foreach ($data['commisionInstallments'] as $div)
+                        {
+                            echo ' <td>'.$div.'</td>';
+                        }
+                    }
+
+                    echo '</tr>';
+                    echo '<tr><td>Tax</td><td>'.$data['tax'].'</td>';
+                    if ($data['instalments']>1)
+                    if ($data['instalments']>1)
+                    {
+                        foreach ($data['taxInstallments'] as $div)
+                        {
+                            echo ' <td>'.$div.'</td>';
+                        }
+                    }
+                    echo '</tr>';
+                    echo '<tr><td><strong>Total cost</strong></td><td><strong>'.$data['totalCost'].'</strong></td>';
+                    if ($data['instalments']>1)
+                    {
+                        foreach ($data['totalCostInstallments'] as $div)
+                        {
+                            echo ' <td>'.$div.'</td>';
+                        }
+                    }
+                    echo '</tr>';
+
+            ?>
+            
+            </table>
+            </div>
+        </div>
+    </div>
+</main>
+
+
+        

@@ -1,0 +1,147 @@
+
+ <main role="main" class="container">
+    
+	<h1 class="mt-5 taskContainer"> Task 3 - <small>Store employee data</small></h1>
+    	
+    <div class="row">
+        <div class="col-md-2">
+            <a href="/Insly/?action=task3" class="btn btn-primary btn-xs pull-right"><b>+</b> Employee List</a>
+        </div>
+        <div class="col-md-2">
+            <a href="/Insly/?action=task3add" class="btn btn-primary btn-xs pull-right"><b>+</b> Add new employee</a>
+        </div>
+    </div>
+
+
+    <h5 class="mt-5 "> Record employee </h5>
+    
+    <div class="container ">
+        <form action="/Insly/?action=task3store" class="form-horizontal"  method="post">
+          <div class="form-group">
+            <label class="control-label col-sm-2" for="name">Name:</label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" id="name" name="name" placeholder="Enter Name">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="control-label col-sm-2" for="phone">Phone:</label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" id="phone" name="phone" placeholder="Enter Phone">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="control-label col-sm-2" for="email">Email:</label>
+            <div class="col-sm-10">
+              <input type="email" class="form-control" id="email" name="email" placeholder="Enter Email">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="control-label col-sm-2" for="email">Birthdate:</label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" id="birthdate" name="birthdate" placeholder="1980-09-25">
+            </div>
+          </div>
+          
+          <div class="form-group">
+            <label class="control-label col-sm-2" for="ssn">SSN:</label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" id="ssn" name="ssn" placeholder="Enter SSN">
+            </div>
+          </div>
+          
+          <div class="form-group">
+          <label class="control-label col-sm-2" for="is_current_employee">Current Employee:</label>
+            <div class="col-sm-10">
+            <select id="is_current_employee" name="is_current_employee" class="form-control">
+                <option value=1>Yes</option>
+                <option value=0>No</option>
+            </select>   
+            </div>
+          </div>
+          
+          <div class="form-group">
+            <label class="control-label col-sm-2" for="address">Address:</label>
+            <div class="col-sm-10"> 
+              <textarea class="form-control" id="address" name="address" width="120"></textarea>
+            </div>
+          </div>
+
+
+          <h5 class="mt-5 "> Record employee informations</h5>
+
+
+          <div class="form-group">
+            <label class="control-label col-sm-2" for="introduction-en">Introduction-EN:</label>
+            <div class="col-sm-10"> 
+              <textarea class="form-control" name="introduction-en" width="120"></textarea>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="control-label col-sm-2" for="introduction-es">Introduction-ES:</label>
+            <div class="col-sm-10"> 
+              <textarea class="form-control" name="introduction-es" width="120"></textarea>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="control-label col-sm-2" for="introduction-fr">Introduction-FR:</label>
+            <div class="col-sm-10"> 
+              <textarea class="form-control" name="introduction-fr" width="120"></textarea>
+            </div>
+          </div>
+
+          <br>
+          <div class="form-group">
+            <label class="control-label col-sm-2" for="experience-en">Experience-EN:</label>
+            <div class="col-sm-10"> 
+              <textarea class="form-control" name="experience-en" width="120"></textarea>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="control-label col-sm-2" for="experience-es">Experience-ES:</label>
+            <div class="col-sm-10"> 
+              <textarea class="form-control" name="experience-es" width="120"></textarea>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="control-label col-sm-2" for="experience-fr">Experience-FR:</label>
+            <div class="col-sm-10"> 
+              <textarea class="form-control" name="experience-fr" width="120"></textarea>
+            </div>
+          </div>
+
+          <br>
+          <div class="form-group">
+            <label class="control-label col-sm-2" for="education-en">Education-EN:</label>
+            <div class="col-sm-10"> 
+              <textarea class="form-control" name="education-en" width="120"></textarea>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="control-label col-sm-2" for="education-es">Education-ES:</label>
+            <div class="col-sm-10"> 
+              <textarea class="form-control" name="education-es" width="120"></textarea>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="control-label col-sm-2" for="education-fr">Education-FR:</label>
+            <div class="col-sm-10"> 
+              <textarea class="form-control" name="education-fr" width="120"></textarea>
+            </div>
+          </div>
+          
+
+          <div class="form-group"> 
+            <div class="col-sm-offset-2 col-sm-10">
+              <button type="submit" class="btn  btn-primary btn-xs">Submit</button>
+            </div>
+          </div>
+        </form>
+    </div>
+
+</main>
+
+
+
