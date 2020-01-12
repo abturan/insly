@@ -2,7 +2,10 @@
 
 $appConfig = require __DIR__ . '/../config/app.config.php';
 
-
+if (isset ($_REQUEST['lang']))
+    $langugeFile = require __DIR__ . '/../config/lang/'.$_REQUEST['lang'].'/locale.php';
+else 
+    $langugeFile = require __DIR__ . '/../config/lang/en/locale.php';
 /**
  * Router
  */
@@ -74,7 +77,7 @@ $taskManager = new taskManager($appConfig);
 /**
  * Set the controller
  */
-if ($controller_name=='task3Controller') $controller = new $controller_name($taskManager);
+if ($controller_name=='task3Controller') $controller = new $controller_name($taskManager,$langugeFile);
 else $controller = new $controller_name($_REQUEST);
 
 

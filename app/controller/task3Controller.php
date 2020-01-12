@@ -1,11 +1,14 @@
 <?php
+
 class task3Controller
 {
     private $taskManager;
+    private $langugeFile;
     
-    public function __construct($taskManager)
+    public function __construct($taskManager,$langugeFile)
     {
         $this->taskManager = $taskManager; 
+        $this->langugeFile = $langugeFile; 
     }
 
     public function home()
@@ -54,10 +57,23 @@ class task3Controller
     }
 
     public function show($request)
-    {
+    {   
         $employee = $this->taskManager->findOneEmployeeById($request['id']);
+        $lang = [
+          'locale' => $this->langugeFile,
+          'current' => (!isset($_REQUEST['lang']))? 'en' : $_REQUEST['lang'], //default language is En
+          'langList' => [
+            'en', 'es', 'fr'
+          ],
+        ];
+
+        $data = [
+          'employee' => $employee,
+          'lang' => $lang,
+        ];
+
         $View = new taskView($this->taskManager);
-        $View->renderView($employee);
+        $View->renderView($data);
     }
 
     protected function redirectAction($route="?action=task3")

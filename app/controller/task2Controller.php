@@ -11,7 +11,7 @@ class task2Controller extends controller implements calculatable
     private $instalments;
     private $timeZone;
     
-    public function __construct($request)
+    public function __construct($request, $lang = null)
     {
       $this->estimated = $request['estimated'];
       $this->tax = $request['tax'];

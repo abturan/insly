@@ -12,7 +12,17 @@
     </div>
 
     <h5 class="mt-5 "> Employee Detail</h5>
-    
+    <div class="row">
+        <div class="col-md-2">
+            <a href="?action=employee&id=<?php echo $data['employee']['id']?>&lang=en" class="btn  btn-xs pull-right"> <img src="img/en.svg" style="width:50px"> English</a>
+        </div>
+        <div class="col-md-2">
+            <a href="?action=employee&id=<?php echo $data['employee']['id']?>&lang=es" class="btn btn-xs pull-right"> <img src="img/es.svg" style="width:50px"> Spain</a>
+        </div>
+        <div class="col-md-2">
+            <a href="?action=employee&id=<?php echo $data['employee']['id']?>&lang=fr" class="btn  btn-xs pull-right"> <img src="img/fr.svg" style="width:50px"> French</a>
+        </div>
+    </div>
     <div class="container">
         <div class="row col-md-12 ">
             
@@ -20,52 +30,40 @@
             
                     <?php
 
-                    $is_current_employee = ($data['is_current_employee']=1)?'Yes':'No';
+                    $is_current_employee = ($data['employee']['is_current_employee']=1)?'Yes':'No';
                             
                             echo '
-                            <tr><td colspan=2 style="background-color:grey; color:white">General Infromations</td></tr>
-                            <tr><td>ID</td><td>'.$data['id'].'</td></tr>
-                            <tr><td>Name</td><td>'.$data['name'].'</td></tr>
-                            <tr><td>Email</td><td>'.$data['email'].'</td></tr>
-                            <tr><td>Birth Date</td><td>'.$data['birthdate'].'</td></tr>
-                            <tr><td>Phone</td><td>'.$data['phone'].'</td></tr>
-                            <tr><td>SSN</td><td>'.$data['ssn'].'</td></tr>
+                            <tr><td colspan=2 style="background-color:grey; color:white">General Informations</td></tr>
+                            <tr><td>ID</td><td>'.$data['employee']['id'].'</td></tr>
+                            <tr><td>Name</td><td>'.$data['employee']['name'].'</td></tr>
+                            <tr><td>Email</td><td>'.$data['employee']['email'].'</td></tr>
+                            <tr><td>Birth Date</td><td>'.$data['employee']['birthdate'].'</td></tr>
+                            <tr><td>Phone</td><td>'.$data['employee']['phone'].'</td></tr>
+                            <tr><td>SSN</td><td>'.$data['employee']['ssn'].'</td></tr>
                             <tr><td>Current</td><td>'.$is_current_employee.'</td></tr>
-                            <tr><td>Address</td><td>'.$data['address'].'</td></tr>
+                            <tr><td>Address</td><td>'.$data['employee']['address'].'</td></tr>
                             </tr>
                             ';
 
-                            
-                            foreach ($data['info'] as $key => $row) 
+                           
+                            foreach ($data['employee']['info'] as $key => $row) 
                             {
-                                if ($row['employee_info_id']==1) 
-                                {
-                                    echo '
-                                    <tr><td colspan=2 style="background-color:grey; color:white">Introduction</td></tr>
-                                    <tr><td>Introduction <br><span class="flag-icon flag-icon-us"></span></td><td>'.$row['info_en'].'</td></tr>
-                                    <tr><td>Introducción <br><span class="flag-icon flag-icon-es"></span></td><td>'.$row['info_es'].'</td></tr>
-                                    <tr><td>Introduction <br><span class="flag-icon flag-icon-fr"></span></td><td>'.$row['info_fr'].'</td></tr>
-                                    ';
-
-                                } else if ($row['employee_info_id']==2) 
-                                {
-                                    echo '
-                                    <tr><td colspan=2 style="background-color:grey; color:white">Previous work experience</td></tr>
-                                    <tr><td>Previous work experience<br><span class="flag-icon flag-icon-us"></td><td>'.$row['info_en'].'</td></tr>
-                                    <tr><td>Experiencia de trabajo previa<br><span class="flag-icon flag-icon-es"></td><td>'.$row['info_es'].'</td></tr>
-                                    <tr><td>Précédente expérience professionnelle<br><span class="flag-icon flag-icon-fr"></td><td>'.$row['info_fr'].'</td></tr>
-                                    ';
-
-                                } else if ($row['employee_info_id']==3) 
-                                {
-                                    echo '
-                                    <tr><td colspan=2 style="background-color:grey; color:white">Education information</td></tr>
-                                    <tr><td>Education information<br><span class="flag-icon flag-icon-us"></td><td>'.$row['info_en'].'</td></tr>
-                                    <tr><td>ExperieInformación sobre Educación<br><span class="flag-icon flag-icon-es"></td><td>'.$row['info_es'].'</td></tr>
-                                    <tr><td>Information sur l\'éducation<br><span class="flag-icon flag-icon-fr"></td><td>'.$row['info_fr'].'</td></tr>
-                                    ';
-
+                                
+                                if ($row['employee_info_id']==1){
+                                    $title = $data['lang']['locale']['titleIntroduction'];
+                                } else if ($row['employee_info_id']==2){
+                                    $title = $data['lang']['locale']['titleExperience'];
+                                } else if ($row['employee_info_id']==3){
+                                    $title = $data['lang']['locale']['titleEducation'];
                                 }
+
+
+                                if (isset($data['lang']['current'])) {
+                                echo '
+                                    <tr><td colspan=2 style="background-color:grey; color:white">'.$title.'</td></tr>
+                                    <tr><td><strong>'.$title.' </strong><br><br><img src="img/'.$data['lang']['current'].'.svg" style="width:50px"></td><td>'.$row['info_'.$data['lang']['current'].''].'</td></tr>
+                                    ';
+                                } 
                             }
                     ?>
             </table>
