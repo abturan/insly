@@ -24,46 +24,46 @@
                         }
                     }
                     echo '</tr>';
-                    echo '<tr><td>Value</td><td>'.$data['value'].'</td>';
+                    echo '<tr><td>Value</td><td>'.$data['value'].'&nbsp; &#8364</td>';
                     echo '</tr>';
-                    echo '<tr><td>Base premium</td><td>'.$data['basePrice'].'</td>';
+                    echo '<tr><td>Base premium</td><td>'.$data['basePrice'].'&nbsp; &#8364</td>';
 
                     if ($data['instalments']>1)
                     {
                         foreach ($data['basePriceInstallments'] as $div)
                         {
-                            echo ' <td>'.$div.'</td>';
+                            echo ' <td>'.$div.'&nbsp; &#8364</td>';
                         }
                     }
 
                     echo '</tr>';
-                    echo '<tr><td>Commission</td><td>'.$data['commision'].'</td>';
+                    echo '<tr><td>Commission</td><td>'.$data['commision'].'&nbsp; &#8364</td>';
 
                     if ($data['instalments']>1)
                     {
                         foreach ($data['commisionInstallments'] as $div)
                         {
-                            echo ' <td>'.$div.'</td>';
+                            echo ' <td>'.$div.'&nbsp; &#8364</td>';
                         }
                     }
 
                     echo '</tr>';
-                    echo '<tr><td>Tax</td><td>'.$data['tax'].'</td>';
+                    echo '<tr><td>Tax</td><td>'.$data['tax'].'&nbsp; &#8364</td>';
                     if ($data['instalments']>1)
                     if ($data['instalments']>1)
                     {
                         foreach ($data['taxInstallments'] as $div)
                         {
-                            echo ' <td>'.$div.'</td>';
+                            echo ' <td>'.$div.'&nbsp; &#8364</td>';
                         }
                     }
                     echo '</tr>';
-                    echo '<tr><td><strong>Total cost</strong></td><td><strong>'.$data['totalCost'].'</strong></td>';
+                    echo '<tr><td><strong>Total cost</strong></td><td><strong>'.$data['totalCost'].'&nbsp; &#8364</strong></td>';
                     if ($data['instalments']>1)
                     {
                         foreach ($data['totalCostInstallments'] as $div)
                         {
-                            echo ' <td>'.$div.'</td>';
+                            echo ' <td>'.$div.'&nbsp; &#8364</td>';
                         }
                     }
                     echo '</tr>';

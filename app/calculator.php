@@ -1,5 +1,7 @@
 <?php
-class Calc {
+require_once 'controller/calculatable.php';
+
+class calc implements calculatable {
 
     public $estimated;
     public $tax;
@@ -8,8 +10,8 @@ class Calc {
 
     private $basePrice = 11;
     private $basePriceCustom = 13;
-    private $basePriceCustomTimeStart = 150000;
-    private $basePriceCustomTimeEnd = 200000;
+    private $basePriceCustomTimeStart = 150000; // 15:00:00
+    private $basePriceCustomTimeEnd = 200000; // 20:00:00
     private $basePriceCustomDay = 'Friday';
     private $commission = 17;
 
@@ -52,7 +54,7 @@ class Calc {
 
 
 
-    public function basePrice() : int
+    protected function basePrice() : int
     {
         $basePriceCustomTimeStart = $this->basePriceCustomTimeStart;
         $basePriceCustomTimeEnd = $this->basePriceCustomTimeEnd;
@@ -66,7 +68,7 @@ class Calc {
     /**
      * Base price of policy is 11% from entered car value, except every Friday 15-20 o’clock (user time) when it is 13%
      */
-    public function isWithinTimeRange($start, $end) : bool
+    protected function isWithinTimeRange($start, $end) : bool
     {
         date_default_timezone_set($this->timeZone);
         $now = date ("His");
@@ -86,36 +88,35 @@ class Calc {
      * Installment sums must match total policy sum- pay attention to cases where sum does not divide equally
      * 
      */
-    public function installments ($paymentType, $installments){
+    protected function installments ($amount, $installments){
         
         $returnArr = [];
 
-        $div = number_format(round($paymentType/$installments), 2, ',', '') ;
-        $sumOfDivisions = $div * $installments;
+        $installmentAmount = number_format($amount/$installments, 2, '.', '') ;
+        $sumOfInstallmentAmounts = $installmentAmount * $installments;
+        
   
         for ($i=1; $i<=$installments; $i++)
         {
-            if ($sumOfDivisions != $paymentType)
+            if ($sumOfInstallmentAmounts != $amount)
             {
-                if ($sumOfDivisions > $paymentType){
-                    $diff = $sumOfDivisions - $paymentType;
+                if ($sumOfInstallmentAmounts > $amount){
+                    $diff = $sumOfInstallmentAmounts - $amount;
                     if ($i == $installments){
-                        $div = number_format($div - $diff, 2, ',', '');
-                        $returnArr[] = $div;
+                        $returnArr[] = 'a'.number_format($installmentAmount - $diff, 2, ',', '');
                     } else {
-                        $returnArr[] = $div;
+                        $returnArr[] = 'b'.$installmentAmount;
                     }
                 } else {
-                    $diff = $paymentType - $sumOfDivisions;
+                    $diff = $amount - $sumOfInstallmentAmounts;
                     if ($i == $installments){
-                        $div = number_format($div + $diff, 2, ',', '');
-                        $returnArr[] = $div;
+                        $returnArr[] = 'c'.number_format($installmentAmount + $diff, 2, ',', '');
                     } else {
-                        $returnArr[] = $div;
+                        $returnArr[] = 'd'.$installmentAmount;
                     }
                 }
             } else {
-                $returnArr[] = $div;
+                $returnArr[] = $installmentAmount;
             }
         }
         return $returnArr;

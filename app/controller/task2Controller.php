@@ -1,29 +1,36 @@
 <?php
 include '../app/calculator.php';
+include 'controller.php';
+require_once 'calculatable.php';
 
-class task2Controller
+class task2Controller extends controller implements calculatable
 {
+    private $resultSet;
+    private $estimated;
+    private $tax;
+    private $instalments;
+    private $timeZone;
     
+    public function __construct($request)
+    {
+      $this->estimated = $request['estimated'];
+      $this->tax = $request['tax'];
+      $this->instalments = $request['instalments'];
+      $this->timeZone = $request['timezone'];
+    }
+
     public function home()
     { 
       $View = new TaskView();
       $View->renderView();
     }
 
-    public function calculate($request)
+    public function calculate() : array
     { 
-      $estimated = $request['estimated'];
-      $tax = $request['tax'];
-      $instalments = $request['instalments'];
-      $timeZone = $request['timezone'];
-
-      $calculator = new Calc($estimated, $tax, $instalments, $timeZone);
-      $resultSet = $calculator->calculate();
-
+      $calculator = new Calc($this->estimated, $this->tax, $this->instalments, $this->timeZone);
+      $this->resultSet = $calculator->calculate();
       $View = new TaskView();
-      $View->renderView($resultSet);
+      $View->renderView($this->resultSet);
     }
-
     
-
 }

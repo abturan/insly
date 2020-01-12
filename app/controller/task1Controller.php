@@ -1,6 +1,7 @@
 <?php
+require 'controller.php';
 
-class task1Controller
+class task1Controller extends controller
 {
     
   public function home()

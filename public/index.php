@@ -75,7 +75,7 @@ $taskManager = new taskManager($appConfig);
  * Set the controller
  */
 if ($controller_name=='task3Controller') $controller = new $controller_name($taskManager);
-else $controller = new $controller_name();
+else $controller = new $controller_name($_REQUEST);
 
 
 /**
