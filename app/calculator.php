@@ -103,16 +103,16 @@ class calc implements calculatable {
                 if ($sumOfInstallmentAmounts > $amount){
                     $diff = $sumOfInstallmentAmounts - $amount;
                     if ($i == $installments){
-                        $returnArr[] = 'a'.number_format($installmentAmount - $diff, 2, ',', '');
+                        $returnArr[] = number_format($installmentAmount - $diff, 2, ',', '');
                     } else {
-                        $returnArr[] = 'b'.$installmentAmount;
+                        $returnArr[] = $installmentAmount;
                     }
                 } else {
                     $diff = $amount - $sumOfInstallmentAmounts;
                     if ($i == $installments){
-                        $returnArr[] = 'c'.number_format($installmentAmount + $diff, 2, ',', '');
+                        $returnArr[] = number_format($installmentAmount + $diff, 2, ',', '');
                     } else {
-                        $returnArr[] = 'd'.$installmentAmount;
+                        $returnArr[] = $installmentAmount;
                     }
                 }
             } else {
