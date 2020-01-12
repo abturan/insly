@@ -49,8 +49,15 @@ insly/
                  home.phtml         # Task 3 home page and list of employees
                  show.phtml         # Task 3 show employee details
             init.php                # View engine
-    config/                         # Database credentials
-         app.config.php             # Configuration file for MySQL
+    config/                         
+         app.config.php             # Database credentials
+         lang/
+             en/
+                locale.php          # Language file for English
+             es/
+                locale.php          # Language file for Spain
+             fr/       
+                locale.php          # Language file for French
     database/                       
          insly.sql                  # SQL database file
     public/                         
@@ -58,6 +65,10 @@ insly/
             style.css               # Custom css file
          js/                        
             task2.js                # Custom js file for task 2
+         img/                        
+            en.svg                 
+            es.svg                 
+            fr.svg                 
          .htaccess                  
          index.php                  # Starting point for the entire app
     .htaccess                       # Redirect everything to public/ folder
