@@ -74,3 +74,6 @@ insly/
     .htaccess                       # Redirect everything to public/ folder
      
 ```
+
+## Validity
+    This repo will be deleted at 1th February
